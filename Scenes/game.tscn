@@ -1,19 +1,28 @@
-[gd_scene load_steps=2 format=3 uid="uid://dlsnnrarq3117"]
+[gd_scene load_steps=4 format=3 uid="uid://dlsnnrarq3117"]
 
 [ext_resource type="PackedScene" uid="uid://d1jiiu5yo6sob" path="res://Scenes/ball.tscn" id="1_qxrlw"]
+[ext_resource type="PackedScene" uid="uid://c1si3ijmlw2oh" path="res://Scenes/Walls.tscn" id="1_wrm1d"]
+[ext_resource type="PackedScene" uid="uid://jdaflgjvnvgj" path="res://Scenes/player_1.tscn" id="2_wrm1d"]
 
-[node name="Node3D" type="Node3D"]
+[node name="Game" type="Node3D"]
+
+[node name="Walls" parent="." instance=ExtResource("1_wrm1d")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -5.96046e-08, 1, 0, -1, -5.96046e-08, 0, 35.8466, 0)
 light_angular_distance = 45.0
 
 [node name="Camera3DTop" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 7.42518, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5.66157, 0)
 projection = 1
-size = 7.765
+size = 8.447
 
 [node name="Camera3DSide" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.974307, 0.225223, 0, -0.225223, 0.974307, 0, 1.74768, 6.40496)
 
+[node name="Player1" parent="." instance=ExtResource("2_wrm1d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, 0)
+
 [node name="Ball" parent="." instance=ExtResource("1_qxrlw")]
+
+[connection signal="ready" from="Ball" to="Ball" method="_on_ready"]

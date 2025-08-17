@@ -5,9 +5,9 @@
 [sub_resource type="BoxMesh" id="BoxMesh_25osk"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d60mj"]
-size = Vector3(0.25, 0.25, 0.25)
+size = Vector3(0.290039, 0.270508, 0.291016)
 
-[node name="Ball" type="CharacterBody3D"]
+[node name="Ball" type="RigidBody3D"]
 script = ExtResource("1_d60mj")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
