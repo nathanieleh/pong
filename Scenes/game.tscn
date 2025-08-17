@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlsnnrarq3117"]
+
+[ext_resource type="PackedScene" uid="uid://d1jiiu5yo6sob" path="res://Scenes/ball.tscn" id="1_qxrlw"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -5.96046e-08, 1, 0, -1, -5.96046e-08, 0, 35.8466, 0)
+light_angular_distance = 45.0
+
+[node name="Camera3DTop" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 7.42518, 0)
+projection = 1
+size = 7.765
+
+[node name="Camera3DSide" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.974307, 0.225223, 0, -0.225223, 0.974307, 0, 1.74768, 6.40496)
+
+[node name="Ball" parent="." instance=ExtResource("1_qxrlw")]

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1jiiu5yo6sob"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_25osk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d60mj"]
+size = Vector3(0.290039, 0.270508, 0.291016)
+
+[node name="Ball" type="Node3D"]
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+mesh = SubResource("BoxMesh_25osk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("BoxShape3D_d60mj")
+debug_color = Color(0, 0.6, 0.701961, 1)

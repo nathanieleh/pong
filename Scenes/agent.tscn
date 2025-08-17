@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bur13ktleecjb"]
+
+[ext_resource type="Script" uid="uid://dsm33avglu4h7" path="res://Scripts/agent.gd" id="1_ot7av"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i7oqq"]
+size = Vector3(1, 1.05701, 2.12836)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ot7av"]
+size = Vector3(0.5, 1, 2)
+subdivide_height = 1
+
+[node name="agent" type="CharacterBody3D"]
+script = ExtResource("1_ot7av")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0103149, 0.00918579)
+shape = SubResource("BoxShape3D_i7oqq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_ot7av")
+
+[connection signal="ready" from="." to="." method="_on_ready"]
