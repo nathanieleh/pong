@@ -32,11 +32,9 @@ func switch_to_orthogonal():
 	tween = create_tween()
 
 	# Animate FOV down and move camera up
-	print(str(start_zoom))
 	tween.tween_method(set_zoom_factor, start_zoom, end_zoom, transition_time)
 	tween.set_parallel(true)
 	tween.tween_property(self, "position", persp_to_ortho_height, transition_time)
-	print(str(end_zoom))
 
 # Switch from orthogonal → perspective
 func switch_to_perspective():
@@ -49,11 +47,9 @@ func switch_to_perspective():
 	tween.kill()
 	tween = create_tween().set_ease(Tween.EASE_OUT_IN)
 	
-	print(str(start_zoom))
 	tween.tween_method(set_zoom_factor, start_zoom, end_zoom, transition_time*0.25)
 	tween.set_parallel(true)
 	tween.tween_property(self, "position", ortho_to_persp_height, transition_time*0.25)
-	print(str(end_zoom))
 
 
 func toggle_perspective():

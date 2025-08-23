@@ -33,7 +33,6 @@ impact_acceleration = 1.02
 
 [node name="Opponent" parent="." instance=ExtResource("4_3dryh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0, 0)
-SPEED = 10.0
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
