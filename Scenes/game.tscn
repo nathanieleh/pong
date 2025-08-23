@@ -1,10 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://dlsnnrarq3117"]
+[gd_scene load_steps=8 format=3 uid="uid://dlsnnrarq3117"]
 
 [ext_resource type="PackedScene" uid="uid://d1jiiu5yo6sob" path="res://Scenes/ball.tscn" id="1_qxrlw"]
+[ext_resource type="Script" uid="uid://0uqp4krc5wui" path="res://Scripts/game.gd" id="1_wowpa"]
 [ext_resource type="PackedScene" uid="uid://c1si3ijmlw2oh" path="res://Scenes/Walls.tscn" id="1_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://jdaflgjvnvgj" path="res://Scenes/player_1.tscn" id="2_wrm1d"]
+[ext_resource type="Script" uid="uid://bv5h6wfsqqm3i" path="res://Scripts/camera_3d.gd" id="3_1l0tm"]
+[ext_resource type="PackedScene" uid="uid://k04u1wwipi0w" path="res://Scenes/opponent.tscn" id="4_3dryh"]
+[ext_resource type="AudioStream" uid="uid://eh1omx6yncg5" path="res://Assets/8-bit-gaming-background-music-358443.mp3" id="6_i6g32"]
 
 [node name="Game" type="Node3D"]
+script = ExtResource("1_wowpa")
 
 [node name="Walls" parent="." instance=ExtResource("1_wrm1d")]
 
@@ -12,17 +17,42 @@
 transform = Transform3D(1, 0, 0, 0, -5.96046e-08, 1, 0, -1, -5.96046e-08, 0, 35.8466, 0)
 light_angular_distance = 45.0
 
-[node name="Camera3DTop" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5.66157, 0)
-projection = 1
-size = 8.447
-
-[node name="Camera3DSide" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.974307, 0.225223, 0, -0.225223, 0.974307, 0, 1.74768, 6.40496)
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 6, 0)
+current = true
+size = 9.0
+script = ExtResource("3_1l0tm")
 
 [node name="Player1" parent="." instance=ExtResource("2_wrm1d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, 0)
+SPEED = 10.0
 
 [node name="Ball" parent="." instance=ExtResource("1_qxrlw")]
+speed = 10.0
+impact_acceleration = 1.02
 
+[node name="Opponent" parent="." instance=ExtResource("4_3dryh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0, 0)
+SPEED = 10.0
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+ignore_time_scale = true
+
+[node name="Score" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 0, -2)
+text = "0 : 0"
+font_size = 128
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("6_i6g32")
+attenuation_model = 3
+autoplay = true
+parameters/looping = true
+
+[connection signal="ready" from="Player1" to="Player1" method="_on_ready"]
+[connection signal="location" from="Ball" to="." method="_on_ball_location"]
+[connection signal="location" from="Ball" to="Opponent" method="_on_ball_location"]
 [connection signal="ready" from="Ball" to="Ball" method="_on_ready"]
+[connection signal="ready" from="Opponent" to="Opponent" method="_on_ready"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

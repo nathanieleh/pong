@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://k04u1wwipi0w"]
+
+[ext_resource type="PackedScene" uid="uid://bur13ktleecjb" path="res://Scenes/agent.tscn" id="1_cj3sh"]
+[ext_resource type="Script" uid="uid://bkhihib66pc32" path="res://Scripts/opponent.gd" id="2_gpji3"]
+
+[node name="Opponent" instance=ExtResource("1_cj3sh")]
+script = ExtResource("2_gpji3")
+
+[node name="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00247372, -0.00179976)
